@@ -1,0 +1,1 @@
+# Card Delivery New Date [![Build status](https://ci.appveyor.com/api/projects/status/v69xbk7ivhswug8i?svg=true)](https://ci.appveyor.com/project/nmarenova/carddeliverynewdate)
