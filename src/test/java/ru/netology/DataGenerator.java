@@ -1,4 +1,4 @@
-package ru.netology.card_delivery_new_date;
+package ru.netology;
 
 import com.github.javafaker.Faker;
 
@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class CardDeliveryNewDate {
-    private CardDeliveryNewDate() {
+public class DataGenerator {
+    private DataGenerator() {
     }
 
     public static class Registration {

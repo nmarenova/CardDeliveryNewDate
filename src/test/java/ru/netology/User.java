@@ -1,4 +1,4 @@
-package ru.netology.card_delivery_new_date;
+package ru.netology;
 public class User {
     private final String city;
     private final String name;
