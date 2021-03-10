@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -19,15 +21,16 @@ public class CardDeliveryTest {
 
     @Test
     void shouldCardDeliveryNewDate() {
-        $("[data-test-id='city'] input").setValue(DataGenerator.Registration.generateUser().getCity());
+        User user = DataGenerator.Registration.generateUser();
+        $("[data-test-id='city'] input").setValue(user.getCity());
         $("[data-test-id= date] input").sendKeys(Keys.CONTROL + "a");
         $("[data-test-id=date] input").sendKeys(Keys.DELETE);
         $("[data-test-id= date] input").sendKeys(DataGenerator.Registration.getDate(3));
-        $("[data-test-id=name] input").setValue(DataGenerator.Registration.generateUser().getName());
-        $("[data-test-id=phone] input").setValue(DataGenerator.Registration.generateUser().getPhone());
+        $("[data-test-id=name] input").setValue(user.getName());
+        $("[data-test-id=phone] input").setValue(user.getPhone());
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
-        $(" [data-test-id='success-notification']").waitUntil(visible, 150000)
+        $(" [data-test-id='success-notification']").shouldBe(visible, Duration.ofMillis(15000))
                 .shouldHave(text("Успешно! Встреча успешно запланирована на " + DataGenerator.Registration.getDate(3)));
         $(".calendar-input input").sendKeys(Keys.CONTROL + "a");
         $(".calendar-input input").sendKeys(Keys.DELETE);
